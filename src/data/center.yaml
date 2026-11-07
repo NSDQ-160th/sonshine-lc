@@ -1,0 +1,177 @@
+# Volunteer-editable. Do not invent ages, days, fees, or camp dates.
+# Fees from SSLC-Fees-Schedule.pdf (uploaded March 2024). Confirm PDF before quoting.
+
+name: SonShine Learning Center
+shortName: SonShine
+tagline: A preschool ministry of Calvary Chapel Frederick
+established: 2018
+
+purpose: >-
+  Our purpose is to provide quality education and tender loving care for the
+  children enrolled, with emphasis on the development of Christian character,
+  values, and ideals from a Biblical perspective.
+
+mission: >-
+  We provide a scriptural foundation in all areas of education, designed to
+  lay a foundation for children that will serve them well throughout their lives.
+  We focus on the areas of communication, problem solving, movement, music,
+  and art to equip each child with the abilities necessary for successful living
+  as well as nurture special God-given talents.
+
+scripture:
+  text: >-
+    Train up a child in the way he should go. And when he is old he will not
+    depart from it.
+  ref: Proverbs 22:6
+
+address:
+  line: 244A S Jefferson St
+  city: Frederick
+  region: MD
+  postal: "21701"
+  mapsQuery: "244A S Jefferson St, Frederick, MD 21701"
+
+phone: "+1-240-651-0890"
+phoneDisplay: "(240) 651-0890"
+email: sonshinelc@calvaryfrederick.com
+
+church:
+  name: Calvary Chapel Frederick
+  url: https://www.calvaryfrederick.com
+  phone: "+1-301-663-4485"
+
+social:
+  facebook: https://www.facebook.com/SonShineLCPreschool
+
+program:
+  ages: ages 3 and 4
+  days: Monday, Wednesday, and Friday
+  daysShort: Mon / Wed / Fri
+  arrival: "08:45"
+  classStart: "09:00"
+  classEnd: "11:45"
+  dismissal: "12:00"
+  notes: >-
+    Children should be in the room at 9:00 AM. Pickup begins at 11:45 AM.
+    Morning preschool officially ends at 12:01 PM.
+
+capacityNote: >-
+  The building can accommodate up to 20 children. SonShine limits enrollment
+  so the church can also use the facilities during the day. The playground
+  is fenced.
+
+msde: >-
+  SonShine Learning Center is accredited by the Maryland State Department of
+  Education. It is religious-exempt from Maryland licensure and self-regulates
+  to exceed the state’s minimum standards for childcare workers.
+
+nondiscrimination: >-
+  SonShine Learning Center admits students of any national and ethnic origin
+  to all the rights, privileges, programs, and activities generally accorded
+  or made available to students at the school.
+
+fees:
+  asOf: March 2024
+  source: /s/SSLC-Fees-Schedule.pdf
+  registrationFirst: "$90"
+  registrationAdditional: "$60"
+  materials: "$200"
+  monthly: "$180"
+  yearly: "$1,620"
+  yearlyNote: monthly fee × 9 months
+  latePickup: >-
+    $15 for any portion of the first 15 minutes past pickup, then $1 per minute.
+    Paid in cash at pickup.
+  tuitionCheck: >-
+    Tuition is paid by check to Calvary Chapel Frederick, earmarked for SSLC
+    with the child’s name.
+
+calendar:
+  label: 2025–2026
+  firstDay: September 3
+  lastDay: May 22
+  items:
+    - September 3 — First day of school
+    - November 24 — Thanksgiving party
+    - November 26–28 — Thanksgiving, no school
+    - December 19 — Christmas party
+    - December 22 – January 5 — Christmas, no school
+    - January 19 — Martin Luther King, Jr. Day, no school
+    - February 13 — Valentine’s party
+    - February 16 — Presidents’ Day, no school
+    - March 27 — Easter party
+    - March 30 – April 6 — Spring break, no school
+    - May 18 — End of the year party
+    - May 22 — Last day of school
+
+day:
+  - time: "8:45"
+    label: Arrival, welcome, and prayer
+  - time: "9:05"
+    label: Pledges and prayer
+  - time: "9:20"
+    label: Worship and Bible story
+  - time: "9:35"
+    label: Let’s Learn time
+  - time: "9:50"
+    label: Snack, PE or outside play, bathroom break
+  - time: "10:10"
+    label: Teacher time
+  - time: "10:45"
+    label: Discovery time
+  - time: "11:45"
+    label: Dismissal
+
+closings:
+  - If Frederick County Public Schools are closed, SonShine is closed.
+  - If FCPS is delayed 2 hours, SonShine classes are cancelled.
+  - If FCPS is delayed 1 hour, SonShine starts at 10:00 AM and ends at the regular time (11:45 AM–12:00 noon).
+  - If FCPS closes early, SonShine ends on time unless families are notified.
+  - Call the preschool line; the recording has late or closing information.
+
+teachers:
+  - name: Mhairi Lewis
+    role: Director
+    photo: /images/teachers/mhairi.jpg
+    bio: >-
+      Mhairi Lewis is the director of SonShine Learning Center. She was director
+      of children’s ministry at Calvary Chapel Frederick for 9 years and has
+      over 20 years of experience in children’s education. She has taken early
+      childhood education classes at Liberty University and holds an SVQ from
+      Scotland.
+  - name: Kathy Miller
+    role: Teacher’s assistant
+    photo: /images/teachers/kathy.jpg
+    bio: >-
+      Kathleen “Kathy” Miller has served as a substitute teacher’s assistant
+      and as a volunteer in children’s ministry and VBS at Calvary Chapel
+      Frederick. She has a deep passion for teaching children to learn and
+      grow in Christ, and for helping them develop the talents God has given them.
+
+camp:
+  showDates: false
+  ages: ages 3–7
+  window: mornings, 9:00 AM–12:00 PM
+  note: >-
+    SonShine has offered a morning Christian camp with songs, prayer, Bible
+    time, crafts, outside play, games, snacks, and puppet shows. Current-year
+    dates, spots, and rates are not listed here. Email Mrs. Mhairi for this
+    year’s camp.
+
+files:
+  - label: Fees schedule
+    href: /s/SSLC-Fees-Schedule.pdf
+  - label: Parent handbook
+    href: /s/SonShine-Parent-Handbook.pdf
+  - label: Enrollment application
+    href: /s/Student-Enrollment-Application_Current.pdf
+  - label: Emergency form
+    href: /s/emergency-form.pdf
+  - label: Photography permission
+    href: /s/SonShine-Photo-Permission-Form.pdf
+  - label: Health inventory (OCC 1215)
+    href: /s/OCC-1215-Health-Inventory-Revised-September-2022-final.pdf
+  - label: Daily schedule (FROG)
+    href: /s/FROG-schedule.pdf
+  - label: Weekly learning schedule
+    href: /s/Learning-Schedule.pdf

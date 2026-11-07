@@ -1,0 +1,189 @@
+---
+import { center } from '../data/center';
+import Logo from './Logo.astro';
+
+interface Props {
+  current?: 'home' | 'enroll' | 'schedule' | 'teachers' | 'beliefs' | 'closings' | 'camp';
+}
+
+const { current } = Astro.props;
+
+const links = [
+  { href: '/enroll/', id: 'enroll', label: 'Enroll' },
+  { href: '/schedule/', id: 'schedule', label: 'Schedule' },
+  { href: '/teachers/', id: 'teachers', label: 'Teachers' },
+  { href: '/beliefs/', id: 'beliefs', label: 'Beliefs' },
+  { href: '/closings/', id: 'closings', label: 'Closings' },
+] as const;
+---
+
+<header class="header" data-header>
+  <div class="header__bar wrap">
+    <Logo />
+    <nav class="header__nav" aria-label="Primary">
+      {
+        links.map((link) => (
+          <a href={link.href} aria-current={current === link.id ? 'page' : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <a class="btn btn--primary header__cta" href="/enroll/">Enroll</a>
+    <button
+      class="header__toggle"
+      type="button"
+      data-menu-toggle
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span class="header__bun"></span>
+      <span class="header__bun"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+  <div class="sheet" id="site-menu" data-menu hidden>
+    <nav class="sheet__nav" aria-label="Mobile">
+      {
+        links.map((link) => (
+          <a href={link.href} aria-current={current === link.id ? 'page' : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
+      <a href="/camp/">Summer camp</a>
+      <a href={center.church.url} rel="noreferrer">The church</a>
+      <a class="btn btn--primary" href="/enroll/">Enroll</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  import '../scripts/header.ts';
+</script>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    background: linear-gradient(180deg, rgb(10 48 64 / 0.55), rgb(10 48 64 / 0));
+    color: var(--cream);
+    border-bottom: 1px solid transparent;
+    transition:
+      background-color var(--duration-enter) var(--ease-enter),
+      color var(--duration-enter) var(--ease-enter),
+      border-color var(--duration-enter) var(--ease-enter);
+  }
+
+  .header.is-solid {
+    background: var(--cream);
+    color: var(--ink);
+    border-bottom-color: var(--rule);
+  }
+
+  .header__bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    min-height: 5.25rem;
+  }
+
+  .header__nav {
+    display: none;
+    align-items: center;
+    gap: var(--space-6);
+    margin-left: auto;
+  }
+
+  .header__nav a {
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .header__nav a[aria-current='page'] {
+    box-shadow: inset 0 -2px 0 currentColor;
+  }
+
+  .header__cta {
+    display: none;
+  }
+
+  .header.is-solid :global(.btn--primary) {
+    background: var(--forest);
+    color: var(--cream);
+    border-color: var(--forest);
+  }
+
+  .header:not(.is-solid) :global(.btn--primary) {
+    background: var(--cream);
+    color: var(--forest-deep);
+    border-color: var(--cream);
+  }
+
+  .header__toggle {
+    margin-left: auto;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+  }
+
+  .header__bun {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  .sheet {
+    background: var(--cream);
+    color: var(--ink);
+    padding: var(--space-6) var(--page-margin) var(--space-10);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sheet__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .sheet__nav a:not(.btn) {
+    font-family: var(--font-display);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  @media (min-width: 960px) {
+    .header__nav,
+    .header__cta {
+      display: inline-flex;
+    }
+
+    .header__toggle,
+    .sheet {
+      display: none;
+    }
+  }
+</style>

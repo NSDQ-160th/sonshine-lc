@@ -1,0 +1,93 @@
+---
+import { center, mapsUrl, mailHref, nap, telHref } from '../data/center';
+---
+
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <div>
+      <p class="meta">A ministry of</p>
+      <p class="foot__name">{center.name}</p>
+      <p>
+        <a href={center.church.url} rel="noreferrer">{center.church.name}</a>
+      </p>
+    </div>
+    <div>
+      <p class="meta">Visit</p>
+      <p>
+        <a href={mapsUrl} rel="noreferrer">{nap}</a>
+      </p>
+      <p><a href={telHref}>{center.phoneDisplay}</a></p>
+      <p><a href={mailHref}>{center.email}</a></p>
+    </div>
+    <div>
+      <p class="meta">Mornings</p>
+      <p>{center.program.daysShort}</p>
+      <p>Arrival {center.program.arrival.replace(':00', '').replace('08:45', '8:45 AM')}</p>
+      <p>Class 9:00–11:45 AM · Dismissal 12:00 PM</p>
+      <p>{center.program.ages}</p>
+    </div>
+    <div>
+      <p class="meta">Parents</p>
+      <ul>
+        <li><a href="/enroll/">Enrollment</a></li>
+        <li><a href="/schedule/">Calendar</a></li>
+        <li><a href="/closings/">School closings</a></li>
+        <li><a href="/camp/">Summer camp</a></li>
+        <li><a href={center.social.facebook} rel="noreferrer">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="wrap foot__fine">
+    Christian preschool in downtown Frederick, MD. Preview site — not yet live at sonshinelc.com.
+  </p>
+</footer>
+
+<style>
+  .foot {
+    margin-top: auto;
+    padding: var(--space-14) 0 var(--space-8);
+    background: var(--forest-deep);
+    color: var(--cream);
+  }
+
+  .foot a {
+    color: inherit;
+  }
+
+  .foot__grid {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .foot__name {
+    font-family: var(--font-display);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    margin: var(--space-2) 0;
+  }
+
+  .foot .meta {
+    color: var(--gold-bright);
+    margin-bottom: var(--space-3);
+  }
+
+  .foot ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .foot__fine {
+    margin-top: var(--space-10);
+    font-size: var(--step--1);
+    opacity: 0.75;
+  }
+
+  @media (min-width: 800px) {
+    .foot__grid {
+      grid-template-columns: 1.2fr 1fr 1fr 0.9fr;
+    }
+  }
+</style>
