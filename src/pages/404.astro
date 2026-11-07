@@ -1,33 +1,33 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageBanner from '../components/PageBanner.astro';
 ---
 
 <Base
   title="Page not found | SonShine Learning Center"
   description="That page is not on the SonShine Learning Center site."
 >
-  <article class="missing wrap">
-    <h1>Not here</h1>
-    <p>Try enrollment, the schedule, or email Mrs. Mhairi.</p>
-    <p>
+  <PageBanner
+    title="Page not found"
+    crumbs={[
+      { name: 'Home', path: '/' },
+      { name: '404', path: '/404/' },
+    ]}
+  />
+  <article class="page-body prose">
+    <p class="lead">Try admissions, the schedule, or email Mrs. Mhairi.</p>
+    <p class="actions">
       <a class="btn btn--primary" href="/">Home</a>
-      <a class="btn btn--secondary" href="/enroll/">Enroll</a>
+      <a class="btn btn--secondary" href="/enroll/">Admissions</a>
     </p>
   </article>
 </Base>
 
 <style>
-  .missing {
-    padding: calc(var(--header-offset) + var(--space-16)) 0 var(--space-16);
-    min-height: 60dvh;
-  }
-
-  h1 {
-    margin-bottom: var(--space-4);
-  }
-
-  .missing :global(.btn) {
-    margin-right: var(--space-3);
-    margin-top: var(--space-6);
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
   }
 </style>

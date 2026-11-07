@@ -1,23 +1,31 @@
 ---
-import { center } from '../data/center';
+import { center, mailHref } from '../data/center';
 import Logo from './Logo.astro';
 
 interface Props {
   current?: 'home' | 'enroll' | 'schedule' | 'teachers' | 'beliefs' | 'closings' | 'camp';
+  solid?: boolean;
 }
 
-const { current } = Astro.props;
+const { current, solid = false } = Astro.props;
 
 const links = [
-  { href: '/enroll/', id: 'enroll', label: 'Enroll' },
+  { href: '/enroll/', id: 'enroll', label: 'Admissions' },
   { href: '/schedule/', id: 'schedule', label: 'Schedule' },
-  { href: '/teachers/', id: 'teachers', label: 'Teachers' },
+  { href: '/teachers/', id: 'teachers', label: 'Faculty' },
   { href: '/beliefs/', id: 'beliefs', label: 'Beliefs' },
-  { href: '/closings/', id: 'closings', label: 'Closings' },
+  { href: '/closings/', id: 'closings', label: 'Families' },
 ] as const;
 ---
 
-<header class="header" data-header>
+<header class:list={['header', { 'is-solid': solid }]} data-header>
+  <div class="header__utility">
+    <div class="wrap header__utility-inner">
+      <a href={center.church.url} rel="noreferrer">The church</a>
+      <a href={mailHref}>Contact</a>
+      <a href={center.social.facebook} rel="noreferrer">Facebook</a>
+    </div>
+  </div>
   <div class="header__bar wrap">
     <Logo />
     <nav class="header__nav" aria-label="Primary">
@@ -52,7 +60,7 @@ const links = [
         ))
       }
       <a href="/camp/">Summer camp</a>
-      <a href={center.church.url} rel="noreferrer">The church</a>
+      <a href={center.church.url} rel="noreferrer">Calvary Chapel Frederick</a>
       <a class="btn btn--primary" href="/enroll/">Enroll</a>
     </nav>
   </div>
@@ -69,42 +77,68 @@ const links = [
     left: 0;
     right: 0;
     z-index: 40;
-    background: linear-gradient(180deg, rgb(10 48 64 / 0.55), rgb(10 48 64 / 0));
-    color: var(--cream);
-    border-bottom: 1px solid transparent;
+    color: var(--white);
+    background: transparent;
     transition:
       background-color var(--duration-enter) var(--ease-enter),
       color var(--duration-enter) var(--ease-enter),
-      border-color var(--duration-enter) var(--ease-enter);
+      box-shadow var(--duration-enter) var(--ease-enter);
+  }
+
+  .header__utility {
+    display: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: 1px solid rgb(255 255 255 / 0.18);
+  }
+
+  .header__utility-inner {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-6);
+    min-height: 2.25rem;
+    align-items: center;
+  }
+
+  .header__utility a {
+    text-decoration: none;
+    opacity: 0.85;
   }
 
   .header.is-solid {
-    background: var(--cream);
-    color: var(--ink);
+    background: var(--white);
+    color: var(--navy-deep);
+    box-shadow: 0 1px 0 var(--rule);
+  }
+
+  .header.is-solid .header__utility {
     border-bottom-color: var(--rule);
+    color: var(--navy);
   }
 
   .header__bar {
     display: flex;
     align-items: center;
     gap: var(--space-6);
-    min-height: 5.25rem;
+    min-height: 4.5rem;
   }
 
   .header__nav {
     display: none;
     align-items: center;
-    gap: var(--space-6);
+    gap: var(--space-7, 1.75rem);
     margin-left: auto;
   }
 
   .header__nav a {
     text-decoration: none;
-    font-family: var(--font-display);
+    font-family: var(--font-ui);
     font-weight: 500;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    font-size: 0.82rem;
+    font-size: 0.72rem;
     min-height: 44px;
     display: inline-flex;
     align-items: center;
@@ -118,16 +152,16 @@ const links = [
     display: none;
   }
 
-  .header.is-solid :global(.btn--primary) {
-    background: var(--forest);
-    color: var(--cream);
-    border-color: var(--forest);
+  .header:not(.is-solid) :global(.btn--primary) {
+    background: var(--white);
+    color: var(--navy-deep);
+    border-color: var(--white);
   }
 
-  .header:not(.is-solid) :global(.btn--primary) {
-    background: var(--cream);
-    color: var(--forest-deep);
-    border-color: var(--cream);
+  .header.is-solid :global(.btn--primary) {
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
   }
 
   .header__toggle {
@@ -153,10 +187,9 @@ const links = [
   }
 
   .sheet {
-    background: var(--cream);
-    color: var(--ink);
-    padding: var(--space-6) var(--page-margin) var(--space-10);
-    border-bottom: 1px solid var(--rule);
+    background: var(--navy-deep);
+    color: var(--cream);
+    padding: var(--space-6) var(--page-margin) var(--space-12);
   }
 
   .sheet__nav {
@@ -167,23 +200,36 @@ const links = [
 
   .sheet__nav a:not(.btn) {
     font-family: var(--font-display);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-style: italic;
     text-decoration: none;
     min-height: 44px;
     display: inline-flex;
     align-items: center;
   }
 
+  .sheet :global(.btn--primary) {
+    align-self: flex-start;
+    margin-top: var(--space-4);
+    background: var(--white);
+    color: var(--navy-deep);
+    border-color: var(--white);
+  }
+
   @media (min-width: 960px) {
+    .header__utility,
     .header__nav,
     .header__cta {
-      display: inline-flex;
+      display: flex;
     }
 
     .header__toggle,
     .sheet {
       display: none;
+    }
+
+    .header__bar {
+      min-height: 5.25rem;
     }
   }
 </style>

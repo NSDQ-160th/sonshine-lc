@@ -1,0 +1,67 @@
+---
+interface Crumb {
+  name: string;
+  path: string;
+}
+
+interface Props {
+  title: string;
+  crumbs: Crumb[];
+}
+
+const { title, crumbs } = Astro.props;
+---
+
+<section class="banner">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      {
+        crumbs.map((crumb, i) => (
+          <>
+            {i > 0 && <span aria-hidden="true">/</span>}
+            {i === crumbs.length - 1 ? (
+              <span aria-current="page">{crumb.name}</span>
+            ) : (
+              <a href={crumb.path}>{crumb.name}</a>
+            )}
+          </>
+        ))
+      }
+    </nav>
+    <h1>{title}</h1>
+  </div>
+</section>
+
+<style>
+  .banner {
+    background: var(--navy-deep);
+    color: var(--cream);
+    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-12);
+  }
+
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-5);
+    opacity: 0.78;
+  }
+
+  .crumbs a {
+    text-decoration: none;
+  }
+
+  .crumbs a:hover {
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-style: italic;
+    font-weight: 500;
+    max-width: 18ch;
+  }
+</style>

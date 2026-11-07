@@ -8,28 +8,32 @@ interface Props {
 const { faqs = siteFaqs } = Astro.props;
 ---
 
-<section class="faq wrap" id="faq">
-  <p class="meta">Parents ask</p>
-  <h2>Clear answers</h2>
-  <dl>
-    {
-      faqs.map((item) => (
-        <div>
-          <dt>{item.q}</dt>
-          <dd>{item.a}</dd>
-        </div>
-      ))
-    }
-  </dl>
+<section class="faq" id="faq">
+  <div class="wrap">
+    <p class="meta">Parents ask</p>
+    <h2>Clear answers</h2>
+    <dl>
+      {
+        faqs.map((item) => (
+          <div>
+            <dt>{item.q}</dt>
+            <dd>{item.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
 </section>
 
 <style>
   .faq {
-    padding: var(--space-14) 0;
+    padding: var(--space-16) 0;
+    background: var(--white);
   }
 
   .faq h2 {
-    margin: var(--space-3) 0 var(--space-8);
+    margin: var(--space-3) 0 var(--space-10);
+    font-style: italic;
   }
 
   dl {
@@ -39,7 +43,7 @@ const { faqs = siteFaqs } = Astro.props;
   }
 
   dt {
-    font-family: var(--font-ui);
+    font-family: var(--font-display);
     font-weight: 600;
     font-size: var(--step-1);
     margin-bottom: var(--space-2);
