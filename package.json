@@ -1,0 +1,24 @@
+{
+  "name": "sonshine-lc",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SonShine Learning Center — preschool ministry of Calvary Chapel Frederick. Preview on Vercel. Do not attach sonshinelc.com until signed.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "fetch-assets": "node scripts/fetch-assets.mjs",
+    "build": "node scripts/fetch-assets.mjs && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.13.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-yaml": "^4.1.2",
+    "typescript": "^5.9.2"
+  }
+}
