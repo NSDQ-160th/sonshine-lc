@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageBanner from '../components/PageBanner.astro';
 import { center, mailHref } from '../data/center';
 import { breadcrumbJsonLd } from '../data/schema';
 
@@ -7,17 +8,22 @@ const description = `Meet Mhairi Lewis, director of SonShine Learning Center, an
 ---
 
 <Base
-  title="Our Teachers | SonShine Learning Center"
+  title="Faculty | SonShine Learning Center"
   description={description}
   current="teachers"
   jsonLd={breadcrumbJsonLd([
     { name: 'Home', path: '/' },
-    { name: 'Teachers', path: '/teachers/' },
+    { name: 'Faculty', path: '/teachers/' },
   ])}
 >
-  <article class="page wrap">
-    <p class="meta">Faculty</p>
-    <h1>Our teachers</h1>
+  <PageBanner
+    title="Faculty"
+    crumbs={[
+      { name: 'Home', path: '/' },
+      { name: 'Faculty', path: '/teachers/' },
+    ]}
+  />
+  <article class="page-body wrap">
     <p class="lead">
       Laughing and playing are required of all participants. Lessons are reviewed by
       the director. Teachers hold First Aid and CPR training.
@@ -41,12 +47,8 @@ const description = `Meet Mhairi Lewis, director of SonShine Learning Center, an
 </Base>
 
 <style>
-  .page {
-    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-16);
-  }
-
-  .page h1 {
-    margin: var(--space-3) 0 var(--space-4);
+  .lead {
+    max-width: 40rem;
   }
 
   .grid {
@@ -68,8 +70,8 @@ const description = `Meet Mhairi Lewis, director of SonShine Learning Center, an
   }
 
   a {
-    color: var(--forest);
-    font-weight: 600;
+    color: var(--navy);
+    font-weight: 500;
   }
 
   @media (min-width: 800px) {

@@ -1,44 +1,49 @@
-/* Sibling of Calvary Chapel Frederick tokens. Sunshine gold is the preschool accent; teal stays the church family. */
+/* Look of The Master's Academy (navy, taupe, serif display), applied to SonShine facts. */
 
 :root {
-  --forest: #007fa7;
-  --forest-deep: #0a3040;
-  --cream: #fffaf3;
-  --paper: #f7efe3;
-  --ink: #1a140e;
-  --ink-soft: #6b5e52;
+  --navy: #005daa;
+  --navy-deep: #002d52;
+  --sky: #028dff;
+  --ink: #231f20;
+  --ink-soft: #5c5657;
+  --taupe: #dcd3c6;
+  --cream: #f5f3f2;
+  --white: #ffffff;
 
-  --brick: #b45309;
-  --gold: #e0a106;
-  --gold-bright: #f5c84c;
-  --sun: #f4b942;
+  --forest: var(--navy);
+  --forest-deep: var(--navy-deep);
+  --paper: var(--taupe);
+  --gold: #c4a574;
+  --gold-bright: var(--taupe);
+  --sun: #c4a574;
+  --brick: #8a5a3b;
 
-  --inverse: #fffaf3;
-  --inverse-muted: rgb(255 250 243 / 0.82);
-  --scrim: rgb(10 48 64 / 0.62);
-  --scrim-soft: rgb(10 48 64 / 0.28);
+  --inverse: var(--cream);
+  --inverse-muted: rgb(245 243 242 / 0.86);
+  --scrim: rgb(0 45 82 / 0.55);
+  --scrim-soft: rgb(0 45 82 / 0.28);
 
-  --rule: #ead9c2;
-  --focus: #007fa7;
+  --rule: #e4ddd4;
+  --focus: var(--sky);
 
   --bg: var(--cream);
-  --bg-inverse: var(--forest-deep);
+  --bg-inverse: var(--navy-deep);
   --text: var(--ink);
   --text-inverse: var(--cream);
-  --action: var(--forest);
-  --action-hover: var(--forest-deep);
+  --action: var(--navy);
+  --action-hover: var(--navy-deep);
 
-  --step-4: 4rem;
-  --step-4-lh: 4.25rem;
-  --step-3: 2.5rem;
-  --step-3-lh: 2.875rem;
-  --step-2: 1.75rem;
-  --step-2-lh: 2.125rem;
-  --step-1: 1.375rem;
+  --step-4: 4.25rem;
+  --step-4-lh: 4.5rem;
+  --step-3: 2.75rem;
+  --step-3-lh: 3.15rem;
+  --step-2: 1.85rem;
+  --step-2-lh: 2.25rem;
+  --step-1: 1.35rem;
   --step-1-lh: 2rem;
-  --step-0: 1.125rem;
-  --step-0-lh: 1.875rem;
-  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-0-lh: 1.75rem;
+  --step--1: 0.8125rem;
   --step--1-lh: 1.25rem;
 
   --space-1: 0.25rem;
@@ -51,27 +56,27 @@
   --space-10: 2.5rem;
   --space-12: 3rem;
   --space-14: 4.5rem;
-  --space-16: 6rem;
+  --space-16: 6.5rem;
 
-  --page-max: 75rem;
+  --page-max: 72rem;
   --gutter: 1.5rem;
   --page-margin: 1.5rem;
-  --header-offset: 6.25rem;
+  --header-offset: 5.75rem;
 
-  --font-display: "Oswald", "Arial Narrow", "Helvetica Neue", sans-serif;
-  --font-ui: "Source Sans 3", "Source Sans Pro", "Helvetica Neue", sans-serif;
-  --font-scripture: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-display: "Crimson Pro", "Iowan Old Style", Georgia, serif;
+  --font-ui: "Roboto", "Helvetica Neue", sans-serif;
+  --font-scripture: "Crimson Pro", Georgia, serif;
 }
 
 @media (max-width: 767px) {
   :root {
-    --step-4: 2.25rem;
-    --step-4-lh: 2.5rem;
-    --step-3: 1.75rem;
-    --step-3-lh: 2.125rem;
-    --step-2: 1.375rem;
+    --step-4: 2.5rem;
+    --step-4-lh: 2.8rem;
+    --step-3: 1.85rem;
+    --step-3-lh: 2.2rem;
+    --step-2: 1.4rem;
     --step-2-lh: 1.75rem;
-    --page-margin: 1.1rem;
-    --header-offset: 5.5rem;
+    --page-margin: 1.15rem;
+    --header-offset: 4.75rem;
   }
 }

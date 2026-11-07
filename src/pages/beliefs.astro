@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageBanner from '../components/PageBanner.astro';
 import { beliefs } from '../data/beliefs';
 import { breadcrumbJsonLd } from '../data/schema';
 
@@ -16,9 +17,14 @@ const description =
     { name: 'Beliefs', path: '/beliefs/' },
   ])}
 >
-  <article class="page wrap prose">
-    <p class="meta">Statement of faith</p>
-    <h1>What we believe</h1>
+  <PageBanner
+    title="What we believe"
+    crumbs={[
+      { name: 'Home', path: '/' },
+      { name: 'Beliefs', path: '/beliefs/' },
+    ]}
+  />
+  <article class="page-body prose">
     <p class="lead">
       SonShine teaches from the same statement of faith as Calvary Chapel Frederick.
     </p>
@@ -32,22 +38,3 @@ const description =
     }
   </article>
 </Base>
-
-<style>
-  .page {
-    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-16);
-    max-width: 46rem;
-  }
-
-  .page h1 {
-    margin: var(--space-3) 0 var(--space-4);
-  }
-
-  section {
-    margin-top: var(--space-10);
-  }
-
-  h2 {
-    margin-bottom: var(--space-3);
-  }
-</style>

@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageBanner from '../components/PageBanner.astro';
 import { center, mailHref } from '../data/center';
 import { breadcrumbJsonLd } from '../data/schema';
 
@@ -15,9 +16,14 @@ const description = `SonShine Learning Center has offered morning Christian camp
     { name: 'Summer camp', path: '/camp/' },
   ])}
 >
-  <article class="page wrap prose">
-    <p class="meta">When offered</p>
-    <h1>Summer camp</h1>
+  <PageBanner
+    title="Summer camp"
+    crumbs={[
+      { name: 'Home', path: '/' },
+      { name: 'Summer camp', path: '/camp/' },
+    ]}
+  />
+  <article class="page-body prose">
     <p class="lead">{center.camp.note}</p>
     <p>
       Last published shape: {center.camp.ages}, {center.camp.window}. Email
@@ -29,24 +35,3 @@ const description = `SonShine Learning Center has offered morning Christian camp
     </p>
   </article>
 </Base>
-
-<style>
-  .page {
-    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-16);
-    max-width: 46rem;
-  }
-
-  .page h1 {
-    margin: var(--space-3) 0 var(--space-4);
-  }
-
-  a {
-    color: var(--forest);
-    font-weight: 600;
-  }
-
-  .page :global(.btn) {
-    margin-top: var(--space-6);
-    color: var(--cream);
-  }
-</style>

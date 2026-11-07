@@ -1,7 +1,7 @@
 ---
 import FaqList from '../components/FaqList.astro';
 import Base from '../layouts/Base.astro';
-import { center, mailHref, mapsUrl, nap, telHref } from '../data/center';
+import { center, mailHref, mapsUrl, nap } from '../data/center';
 import { faqJsonLd } from '../data/schema';
 import { siteFaqs } from '../data/faq';
 
@@ -22,108 +22,124 @@ const description = `${center.name} is a Christian preschool ministry of ${cente
       height="2223"
     />
     <div class="hero__copy wrap enter">
-      <p class="meta">Preschool ministry of {center.church.name}</p>
-      <h1>SonShine Learning Center</h1>
-      <p class="lead">
-        Quality education and tender care, with Christian character from a Biblical
-        perspective. Downtown Frederick.
-      </p>
-      <p class="hero__facts">
-        {center.program.ages} · {center.program.daysShort} · 9:00 AM–12:00 PM
-      </p>
-      <div class="hero__cta">
-        <a class="btn btn--primary btn--xl" href="/enroll/">See enrollment</a>
-        <a class="btn btn--secondary btn--xl" href={mailHref}>Email Mrs. Mhairi</a>
+      <p class="meta">A preschool ministry of {center.church.name}</p>
+      <p class="hero__kicker">As a Christ-centered preschool, we pursue</p>
+      <h1>
+        Quality education
+        <span>and <em>tender care</em></span>
+        <span class="hero__with">with Christian families</span>
+      </h1>
+      <a class="btn btn--arrow hero__cta" href="/enroll/">Explore admissions</a>
+    </div>
+  </section>
+
+  <section class="mission" id="mission">
+    <div class="wrap mission__grid">
+      <p class="mission__since">Since <em>{center.established}</em></p>
+      <div>
+        <h2>Our purpose</h2>
+        <p>{center.purpose}</p>
+        <a class="btn btn--arrow" href="/enroll/">Begin enrollment</a>
       </div>
     </div>
   </section>
 
-  <section class="band wrap enter">
-    <article>
-      <p class="meta">Mornings</p>
-      <h2>Three days a week</h2>
-      <p>
-        Arrival 8:45 AM. Class 9:00–11:45 AM. Dismissal 12:00 PM. {center.program.days}.
-      </p>
-    </article>
-    <article>
-      <p class="meta">Place</p>
-      <h2>Same church building</h2>
-      <p>
-        <a href={mapsUrl} rel="noreferrer">{nap}</a>. Call
-        <a href={telHref}>{center.phoneDisplay}</a>.
-      </p>
-    </article>
-    <article>
-      <p class="meta">Since {center.established}</p>
-      <h2>A ministry, not a chain</h2>
-      <p>
-        SonShine is the preschool of {center.church.name}. Small by design, so the church
-        can still use the building during the day.
-      </p>
-    </article>
-  </section>
-
-  <section class="story wrap">
-    <div>
-      <p class="meta">Why we exist</p>
-      <h2>Purpose</h2>
-      <p>{center.purpose}</p>
-      <h2 class="story__next">Mission</h2>
-      <p>{center.mission}</p>
+  <section class="faith">
+    <div class="faith__photo">
+      <img
+        src="/images/teachers/mhairi.jpg"
+        alt="Mhairi Lewis, director of SonShine Learning Center"
+        width="800"
+        height="1000"
+      />
+    </div>
+    <div class="faith__copy">
+      <p class="meta">Built upon</p>
+      <h2>the promise of <em>God’s Word</em></h2>
       <blockquote class="scripture">
         {center.scripture.text}
         <cite>{center.scripture.ref}</cite>
       </blockquote>
+      <p>{center.mission}</p>
+      <a class="btn btn--arrow" href="/beliefs/">What we believe</a>
     </div>
-    <aside>
-      <p class="meta">A typical morning</p>
-      <ol>
-        {
-          center.day.map((row) => (
-            <li>
-              <span>{row.time}</span>
-              {row.label}
-            </li>
-          ))
-        }
-      </ol>
-      <a class="btn btn--secondary" href="/schedule/">Full calendar</a>
-    </aside>
   </section>
 
-  <section class="people wrap">
-    <p class="meta">Who you’ll meet</p>
-    <h2>Teachers</h2>
-    <div class="people__grid">
-      {
-        center.teachers.map((t) => (
-          <article>
-            <img src={t.photo} alt={`${t.name}, ${t.role} at SonShine Learning Center`} />
-            <h3>{t.name}</h3>
-            <p class="meta">{t.role}</p>
-            <p>{t.bio}</p>
-          </article>
-        ))
-      }
+  <section class="divisions wrap">
+    <header class="divisions__head">
+      <p class="meta">A typical year</p>
+      <h2>For our littlest learners</h2>
+    </header>
+    <div class="divisions__grid">
+      <a class="card" href="/enroll/">
+        <img src="/images/classroom.jpg" alt="" width="1200" height="900" />
+        <div class="card__copy">
+          <h3>Admissions</h3>
+          <p class="meta">{center.program.ages}</p>
+          <p>Handbook, forms, and published fees for the three-day morning program.</p>
+          <span class="btn btn--arrow">Learn more</span>
+        </div>
+      </a>
+      <a class="card" href="/schedule/">
+        <img src="/images/classroom.jpg" alt="" width="1200" height="900" />
+        <div class="card__copy">
+          <h3>A morning</h3>
+          <p class="meta">9:00–12:00</p>
+          <p>Prayer, worship, Bible story, Let’s Learn, snack, and discovery time.</p>
+          <span class="btn btn--arrow">See the schedule</span>
+        </div>
+      </a>
+      <a class="card" href="/teachers/">
+        <img
+          src="/images/teachers/kathy.jpg"
+          alt=""
+          width="800"
+          height="1000"
+        />
+        <div class="card__copy">
+          <h3>Faculty</h3>
+          <p class="meta">Director &amp; assistant</p>
+          <p>Mrs. Mhairi Lewis and Mrs. Kathy Miller welcome children each class day.</p>
+          <span class="btn btn--arrow">Meet the teachers</span>
+        </div>
+      </a>
     </div>
-    <a class="btn btn--secondary" href="/teachers/">Meet the teachers</a>
   </section>
 
-  <section class="fees wrap">
-    <p class="meta">Published fees · {center.fees.asOf}</p>
-    <h2>Affordable on purpose</h2>
-    <p>
-      Three-day program, {center.program.ages}. Confirm the
-      <a href={center.fees.source}>current fees PDF</a> before paying. {center.fees.tuitionCheck}
-    </p>
-    <ul>
-      <li><strong>{center.fees.monthly}</strong> monthly tuition</li>
-      <li><strong>{center.fees.yearly}</strong> yearly ({center.fees.yearlyNote})</li>
-      <li>Registration {center.fees.registrationFirst} first child, {center.fees.registrationAdditional} additional related child</li>
-      <li>Curriculum / party / materials {center.fees.materials} per year</li>
-    </ul>
-    <a class="btn btn--primary" href="/enroll/">Enrollment packet</a>
+  <section class="glance">
+    <div class="wrap">
+      <p class="meta">At a glance</p>
+      <h2>{center.name}</h2>
+      <ul>
+        <li>
+          <strong>{center.established}</strong>
+          <span>Year founded</span>
+        </li>
+        <li>
+          <strong>3–4</strong>
+          <span>Ages served</span>
+        </li>
+        <li>
+          <strong>M / W / F</strong>
+          <span>Class days</span>
+        </li>
+        <li>
+          <strong>9–12</strong>
+          <span>Morning hours</span>
+        </li>
+        <li>
+          <strong>MSDE</strong>
+          <span>Accredited, religious-exempt</span>
+        </li>
+        <li>
+          <strong>
+            <a href={mapsUrl} rel="noreferrer">Downtown</a>
+          </strong>
+          <span>{nap}</span>
+        </li>
+      </ul>
+      <a class="btn btn--arrow glance__mail" href={mailHref}>Email Mrs. Mhairi</a>
+    </div>
   </section>
 
   <FaqList />
@@ -132,8 +148,8 @@ const description = `${center.name} is a Christian preschool ministry of ${cente
 <style>
   .hero {
     position: relative;
-    min-height: 88dvh;
-    color: var(--cream);
+    min-height: 100dvh;
+    color: var(--white);
     display: grid;
     align-items: end;
   }
@@ -150,132 +166,249 @@ const description = `${center.name} is a Christian preschool ministry of ${cente
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgb(10 48 64 / 0.15), rgb(10 48 64 / 0.78));
+    background:
+      linear-gradient(180deg, rgb(0 45 82 / 0.25) 0%, rgb(0 45 82 / 0.72) 100%);
   }
 
   .hero__copy {
     position: relative;
     z-index: 1;
-    padding: 8rem 0 var(--space-14);
-    max-width: 52rem;
+    padding: 8rem 0 var(--space-16);
+    max-width: 46rem;
+  }
+
+  .hero__kicker {
+    margin: var(--space-6) 0 var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--step-1);
   }
 
   .hero h1 {
-    margin: var(--space-3) 0 var(--space-4);
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    margin-bottom: var(--space-8);
   }
 
-  .hero__facts {
-    margin: var(--space-4) 0 var(--space-6);
-    letter-spacing: 0.04em;
+  .hero h1 em {
+    font-style: italic;
+  }
+
+  .hero__with {
+    font-size: var(--step-2);
+    font-weight: 400;
+    margin-top: var(--space-2);
   }
 
   .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
+    color: var(--white);
   }
 
-  .hero :global(.btn--secondary) {
-    color: var(--cream);
-    border-color: var(--cream);
+  .mission {
+    background: var(--white);
+    padding: var(--space-16) 0;
   }
 
-  .hero :global(.btn--secondary:hover) {
-    background: var(--cream);
-    color: var(--forest-deep);
-  }
-
-  .band {
+  .mission__grid {
     display: grid;
     gap: var(--space-8);
-    padding: var(--space-12) 0;
+    align-items: start;
   }
 
-  .band h2 {
-    font-size: var(--step-1);
+  .mission__since {
+    font-family: var(--font-ui);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .mission__since em {
+    display: block;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--step-4);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--navy-deep);
+    line-height: 1;
+    margin-top: var(--space-2);
+  }
+
+  .mission h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .mission p {
+    max-width: 38rem;
+    margin-bottom: var(--space-6);
+  }
+
+  .faith {
+    display: grid;
+    background: var(--navy-deep);
+    color: var(--cream);
+  }
+
+  .faith__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 22rem;
+  }
+
+  .faith__copy {
+    padding: var(--space-12) var(--page-margin);
+  }
+
+  .faith h2 {
+    margin: var(--space-3) 0 var(--space-6);
+  }
+
+  .faith h2 em {
+    font-style: italic;
+    display: block;
+  }
+
+  .faith .scripture {
+    color: var(--taupe);
+    margin-bottom: var(--space-6);
+  }
+
+  .faith .scripture cite {
+    display: block;
+    margin-top: var(--space-2);
+    font-style: normal;
+    font-family: var(--font-ui);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+  }
+
+  .faith p {
+    max-width: 36rem;
+    margin-bottom: var(--space-6);
+  }
+
+  .divisions {
+    padding: var(--space-16) 0;
+  }
+
+  .divisions__head {
+    margin-bottom: var(--space-10);
+    max-width: 28rem;
+  }
+
+  .divisions__head h2 {
+    margin-top: var(--space-3);
+  }
+
+  .divisions__grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .card {
+    display: grid;
+    text-decoration: none;
+    color: inherit;
+    background: var(--white);
+    min-height: 22rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card img {
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+  }
+
+  .card__copy {
+    padding: var(--space-6);
+  }
+
+  .card h3 {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 500;
     margin: var(--space-2) 0 var(--space-3);
   }
 
-  .story,
-  .people,
-  .fees {
-    padding: var(--space-12) 0;
+  .card p {
+    margin-bottom: var(--space-4);
+    color: var(--ink-soft);
   }
 
-  .story {
+  .card :global(.btn--arrow) {
+    color: var(--navy);
+    padding: 0;
+  }
+
+  .glance {
+    background: var(--navy);
+    color: var(--white);
+    padding: var(--space-16) 0;
+    text-align: center;
+  }
+
+  .glance h2 {
+    margin: var(--space-3) 0 var(--space-12);
+    font-style: italic;
+  }
+
+  .glance ul {
+    list-style: none;
+    padding: 0;
     display: grid;
     gap: var(--space-10);
   }
 
-  .story h2,
-  .people h2,
-  .fees h2 {
-    margin: var(--space-2) 0 var(--space-4);
+  .glance strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 500;
+    font-style: italic;
   }
 
-  .story__next {
-    margin-top: var(--space-8);
-  }
-
-  .scripture cite {
+  .glance span {
     display: block;
     margin-top: var(--space-2);
-    font-style: normal;
-    font-family: var(--font-display);
-    letter-spacing: 0.16em;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    opacity: 0.8;
   }
 
-  .story ol {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: var(--space-3);
-    margin: var(--space-4) 0 var(--space-6);
-  }
-
-  .story li span {
-    display: inline-block;
-    width: 3.5rem;
-    font-family: var(--font-display);
-    letter-spacing: 0.08em;
-    color: var(--forest);
-  }
-
-  .people__grid {
-    display: grid;
-    gap: var(--space-8);
-    margin: var(--space-6) 0;
-  }
-
-  .people img {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    margin-bottom: var(--space-4);
-  }
-
-  .fees ul {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: var(--space-3);
-    margin: var(--space-6) 0;
+  .glance__mail {
+    margin-top: var(--space-12);
+    color: var(--white);
   }
 
   @media (min-width: 800px) {
-    .band {
+    .mission__grid {
+      grid-template-columns: 0.7fr 1.3fr;
+    }
+
+    .faith {
+      grid-template-columns: 0.85fr 1.15fr;
+    }
+
+    .faith__copy {
+      padding: var(--space-16);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .divisions__grid {
       grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .story {
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: start;
-    }
-
-    .people__grid {
-      grid-template-columns: 1fr 1fr;
+    .glance ul {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 </style>

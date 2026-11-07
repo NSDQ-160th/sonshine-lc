@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageBanner from '../components/PageBanner.astro';
 import { center, telHref } from '../data/center';
 import { breadcrumbJsonLd } from '../data/schema';
 
@@ -15,9 +16,14 @@ const description = `SonShine Learning Center follows Frederick County Public Sc
     { name: 'Closings', path: '/closings/' },
   ])}
 >
-  <article class="page wrap prose">
-    <p class="meta">Weather and emergencies</p>
-    <h1>School closing policy</h1>
+  <PageBanner
+    title="School closing policy"
+    crumbs={[
+      { name: 'Home', path: '/' },
+      { name: 'Families', path: '/closings/' },
+    ]}
+  />
+  <article class="page-body prose">
     <p class="lead">
       SonShine follows Frederick County Public Schools. Call
       <a href={telHref}>{center.phoneDisplay}</a> — the recording has late or closing
@@ -35,26 +41,3 @@ const description = `SonShine Learning Center follows Frederick County Public Sc
     </p>
   </article>
 </Base>
-
-<style>
-  .page {
-    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-16);
-    max-width: 46rem;
-  }
-
-  .page h1 {
-    margin: var(--space-3) 0 var(--space-4);
-  }
-
-  ul {
-    padding-left: 1.2rem;
-    margin: var(--space-6) 0;
-    display: grid;
-    gap: var(--space-3);
-  }
-
-  a {
-    color: var(--forest);
-    font-weight: 600;
-  }
-</style>

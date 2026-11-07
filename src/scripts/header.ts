@@ -48,7 +48,7 @@ if (header) {
   if (hero) {
     const sync = () => {
       const bottom = hero.getBoundingClientRect().bottom;
-      setSolid(bottom <= 84);
+      setSolid(bottom <= 96);
     };
     sync();
     window.addEventListener('scroll', sync, { passive: true });

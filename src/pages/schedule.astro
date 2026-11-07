@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageBanner from '../components/PageBanner.astro';
 import { center } from '../data/center';
 import { breadcrumbJsonLd } from '../data/schema';
 
@@ -15,9 +16,14 @@ const description = `SonShine Learning Center ${center.calendar.label} calendar 
     { name: 'Schedule', path: '/schedule/' },
   ])}
 >
-  <article class="page wrap">
-    <p class="meta">{center.calendar.label}</p>
-    <h1>Schedule</h1>
+  <PageBanner
+    title="Schedule"
+    crumbs={[
+      { name: 'Home', path: '/' },
+      { name: 'Schedule', path: '/schedule/' },
+    ]}
+  />
+  <article class="page-body wrap">
     <p class="lead">
       First day {center.calendar.firstDay}. Last day {center.calendar.lastDay}. Parties
       and no-school days follow this calendar. Emergency closings follow Frederick
@@ -54,12 +60,8 @@ const description = `SonShine Learning Center ${center.calendar.label} calendar 
 </Base>
 
 <style>
-  .page {
-    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-16);
-  }
-
-  .page h1 {
-    margin: var(--space-3) 0 var(--space-4);
+  .lead {
+    max-width: 40rem;
   }
 
   .split {
@@ -70,6 +72,7 @@ const description = `SonShine Learning Center ${center.calendar.label} calendar 
 
   h2 {
     margin-bottom: var(--space-4);
+    font-size: var(--step-2);
   }
 
   ul,
@@ -83,13 +86,14 @@ const description = `SonShine Learning Center ${center.calendar.label} calendar 
   ol span {
     display: inline-block;
     width: 3.5rem;
-    font-family: var(--font-display);
-    color: var(--forest);
+    font-family: var(--font-ui);
+    font-weight: 500;
+    color: var(--navy);
   }
 
   a {
-    color: var(--forest);
-    font-weight: 600;
+    color: var(--navy);
+    font-weight: 500;
   }
 
   @media (min-width: 800px) {

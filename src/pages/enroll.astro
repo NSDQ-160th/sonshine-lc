@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageBanner from '../components/PageBanner.astro';
 import { center, mailHref } from '../data/center';
 import { breadcrumbJsonLd } from '../data/schema';
 
@@ -7,17 +8,22 @@ const description = `Enroll at SonShine Learning Center in Frederick, MD. Downlo
 ---
 
 <Base
-  title="Enroll | SonShine Learning Center Frederick"
+  title="Admissions | SonShine Learning Center Frederick"
   description={description}
   current="enroll"
   jsonLd={breadcrumbJsonLd([
     { name: 'Home', path: '/' },
-    { name: 'Enroll', path: '/enroll/' },
+    { name: 'Admissions', path: '/enroll/' },
   ])}
 >
-  <article class="page wrap prose">
-    <p class="meta">Parents</p>
-    <h1>Enrollment</h1>
+  <PageBanner
+    title="Admissions"
+    crumbs={[
+      { name: 'Home', path: '/' },
+      { name: 'Admissions', path: '/enroll/' },
+    ]}
+  />
+  <article class="page-body prose">
     <p class="lead">
       Children may be registered during the year, depending on availability. Annual
       registration is held in January for current families and February for the community.
@@ -68,7 +74,7 @@ const description = `Enroll at SonShine Learning Center in Frederick, MD. Downlo
     <p>{center.msde}</p>
     <p>{center.nondiscrimination}</p>
 
-    <p>
+    <p class="actions">
       <a class="btn btn--primary" href={mailHref}>Email about enrollment</a>
       <a class="btn btn--secondary" href="/s/SonShine-Parent-Handbook.pdf">Read the handbook</a>
     </p>
@@ -76,24 +82,6 @@ const description = `Enroll at SonShine Learning Center in Frederick, MD. Downlo
 </Base>
 
 <style>
-  .page {
-    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-16);
-    max-width: 46rem;
-  }
-
-  .page h1 {
-    margin: var(--space-3) 0 var(--space-4);
-  }
-
-  .page h2 {
-    margin: var(--space-10) 0 var(--space-4);
-  }
-
-  .page p,
-  .page li {
-    margin-bottom: var(--space-4);
-  }
-
   .files {
     list-style: none;
     padding: 0;
@@ -107,13 +95,15 @@ const description = `Enroll at SonShine Learning Center in Frederick, MD. Downlo
     align-items: center;
     padding: 0 var(--space-4);
     border: 1px solid var(--rule);
-    background: var(--paper);
+    background: var(--white);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
   }
 
-  .page :global(.btn) {
-    margin-right: var(--space-3);
-    margin-top: var(--space-4);
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
   }
 </style>
