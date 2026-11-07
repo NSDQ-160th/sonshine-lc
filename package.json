@@ -5,7 +5,7 @@
   "private": true,
   "description": "SonShine Learning Center — preschool ministry of Calvary Chapel Frederick. Preview on Vercel. Do not attach sonshinelc.com until signed.",
   "engines": {
-    "node": ">=22"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "astro dev",

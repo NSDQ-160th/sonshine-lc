@@ -14,11 +14,18 @@
   ],
   "redirects": [
     { "source": "/home", "destination": "/", "permanent": true },
-    { "source": "/enrollment-information", "destination": "/enroll", "permanent": true },
-    { "source": "/our-teachers", "destination": "/teachers", "permanent": true },
-    { "source": "/statement-of-faith", "destination": "/beliefs", "permanent": true },
-    { "source": "/school-closing-policy", "destination": "/closings", "permanent": true },
-    { "source": "/summer-camp", "destination": "/camp", "permanent": true },
-    { "source": "/cart", "destination": "/", "permanent": true }
+    { "source": "/home/", "destination": "/", "permanent": true },
+    { "source": "/enrollment-information", "destination": "/enroll/", "permanent": true },
+    { "source": "/enrollment-information/", "destination": "/enroll/", "permanent": true },
+    { "source": "/our-teachers", "destination": "/teachers/", "permanent": true },
+    { "source": "/our-teachers/", "destination": "/teachers/", "permanent": true },
+    { "source": "/statement-of-faith", "destination": "/beliefs/", "permanent": true },
+    { "source": "/statement-of-faith/", "destination": "/beliefs/", "permanent": true },
+    { "source": "/school-closing-policy", "destination": "/closings/", "permanent": true },
+    { "source": "/school-closing-policy/", "destination": "/closings/", "permanent": true },
+    { "source": "/summer-camp", "destination": "/camp/", "permanent": true },
+    { "source": "/summer-camp/", "destination": "/camp/", "permanent": true },
+    { "source": "/cart", "destination": "/", "permanent": true },
+    { "source": "/cart/", "destination": "/", "permanent": true }
   ]
 }
