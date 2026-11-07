@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import { center, mailHref } from '../data/center';
+import { breadcrumbJsonLd } from '../data/schema';
+
+const description = `Enroll at SonShine Learning Center in Frederick, MD. Download the handbook, application, and health forms. Email ${center.email}. Ages 3 and 4, Monday/Wednesday/Friday mornings.`;
+---
+
+<Base
+  title="Enroll | SonShine Learning Center Frederick"
+  description={description}
+  current="enroll"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Enroll', path: '/enroll/' },
+  ])}
+>
+  <article class="page wrap prose">
+    <p class="meta">Parents</p>
+    <h1>Enrollment</h1>
+    <p class="lead">
+      Children may be registered during the year, depending on availability. Annual
+      registration is held in January for current families and February for the community.
+    </p>
+    <p>
+      Complete the packet before the first day. Email
+      <a href={mailHref}>{center.email}</a> or call {center.phoneDisplay} with questions.
+      Ask Mrs. Mhairi about openings — we do not publish a waitlist here.
+    </p>
+
+    <h2>Forms</h2>
+    <ul class="files">
+      {
+        center.files.map((file) => (
+          <li>
+            <a href={file.href}>{file.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2>Published fees</h2>
+    <p>
+      From the {center.fees.asOf} fees chart for the three-day (Mon, Wed, Fri) program,
+      {center.program.ages}. All listed fees are non-refundable. Confirm the PDF before
+      paying.
+    </p>
+    <ul>
+      <li>Registration, first child {center.fees.registrationFirst}</li>
+      <li>Registration, additional related child {center.fees.registrationAdditional}</li>
+      <li>Curriculum / party / materials {center.fees.materials} per year</li>
+      <li>Tuition {center.fees.monthly} per month, or {center.fees.yearly} per year</li>
+    </ul>
+    <p>{center.fees.tuitionCheck}</p>
+    <p>
+      Tuition is due the first of each month. A $25 late fee applies after the 7th.
+      {center.fees.latePickup}
+    </p>
+
+    <h2>Before the first day</h2>
+    <ul>
+      <li>Children need to be potty-trained before entering preschool.</li>
+      <li>Parents escort the child to the classroom and to the designated staff person.</li>
+      <li>Send an extra change of clothing, labeled with the child’s name.</li>
+      <li>Be in the room at 9:00 AM so class can begin without disruption.</li>
+    </ul>
+
+    <p>{center.msde}</p>
+    <p>{center.nondiscrimination}</p>
+
+    <p>
+      <a class="btn btn--primary" href={mailHref}>Email about enrollment</a>
+      <a class="btn btn--secondary" href="/s/SonShine-Parent-Handbook.pdf">Read the handbook</a>
+    </p>
+  </article>
+</Base>
+
+<style>
+  .page {
+    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-16);
+    max-width: 46rem;
+  }
+
+  .page h1 {
+    margin: var(--space-3) 0 var(--space-4);
+  }
+
+  .page h2 {
+    margin: var(--space-10) 0 var(--space-4);
+  }
+
+  .page p,
+  .page li {
+    margin-bottom: var(--space-4);
+  }
+
+  .files {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .files a {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    padding: 0 var(--space-4);
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .page :global(.btn) {
+    margin-right: var(--space-3);
+    margin-top: var(--space-4);
+  }
+</style>

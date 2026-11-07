@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import { beliefs } from '../data/beliefs';
+import { breadcrumbJsonLd } from '../data/schema';
+
+const description =
+  'What SonShine Learning Center believes. The same statement of faith as Calvary Chapel Frederick: God, Bible, man, and the Church.';
+---
+
+<Base
+  title="What We Believe | SonShine Learning Center"
+  description={description}
+  current="beliefs"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Beliefs', path: '/beliefs/' },
+  ])}
+>
+  <article class="page wrap prose">
+    <p class="meta">Statement of faith</p>
+    <h1>What we believe</h1>
+    <p class="lead">
+      SonShine teaches from the same statement of faith as Calvary Chapel Frederick.
+    </p>
+    {
+      beliefs.map((item) => (
+        <section>
+          <h2>{item.heading}</h2>
+          <p>{item.body}</p>
+        </section>
+      ))
+    }
+  </article>
+</Base>
+
+<style>
+  .page {
+    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-16);
+    max-width: 46rem;
+  }
+
+  .page h1 {
+    margin: var(--space-3) 0 var(--space-4);
+  }
+
+  section {
+    margin-top: var(--space-10);
+  }
+
+  h2 {
+    margin-bottom: var(--space-3);
+  }
+</style>

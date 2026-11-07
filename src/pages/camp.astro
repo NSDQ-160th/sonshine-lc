@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import { center, mailHref } from '../data/center';
+import { breadcrumbJsonLd } from '../data/schema';
+
+const description = `SonShine Learning Center has offered morning Christian camp in Frederick, MD, for ${center.camp.ages}. Email ${center.email} for this year’s dates.`;
+---
+
+<Base
+  title="Summer Camp | SonShine Learning Center"
+  description={description}
+  current="camp"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Summer camp', path: '/camp/' },
+  ])}
+>
+  <article class="page wrap prose">
+    <p class="meta">When offered</p>
+    <h1>Summer camp</h1>
+    <p class="lead">{center.camp.note}</p>
+    <p>
+      Last published shape: {center.camp.ages}, {center.camp.window}. Email
+      <a href={mailHref}>{center.email}</a> and ask Mrs. Mhairi — we do not list old
+      weeks as open registration.
+    </p>
+    <p>
+      <a class="btn btn--primary" href={mailHref}>Ask about camp</a>
+    </p>
+  </article>
+</Base>
+
+<style>
+  .page {
+    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-16);
+    max-width: 46rem;
+  }
+
+  .page h1 {
+    margin: var(--space-3) 0 var(--space-4);
+  }
+
+  a {
+    color: var(--forest);
+    font-weight: 600;
+  }
+
+  .page :global(.btn) {
+    margin-top: var(--space-6);
+    color: var(--cream);
+  }
+</style>

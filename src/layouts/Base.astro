@@ -1,0 +1,59 @@
+---
+import Seo from '../components/Seo.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { orgJsonLd } from '../data/schema';
+import '../styles/tokens.css';
+import '../styles/reset.css';
+import '../styles/motion.css';
+import '../styles/type.css';
+
+interface Props {
+  title: string;
+  description: string;
+  current?: 'home' | 'enroll' | 'schedule' | 'teachers' | 'beliefs' | 'closings' | 'camp';
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { title, description, current, jsonLd = [] } = Astro.props;
+const extra = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/images/logo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href="/fonts/oswald-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/source-sans-3-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <Seo title={title} description={description} jsonLd={[orgJsonLd(), ...extra]} />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <SiteHeader current={current} />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>
+
+<style is:global>
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+
+  body.is-menu-open {
+    overflow: hidden;
+  }
+</style>

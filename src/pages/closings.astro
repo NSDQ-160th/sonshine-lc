@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import { center, telHref } from '../data/center';
+import { breadcrumbJsonLd } from '../data/schema';
+
+const description = `SonShine Learning Center follows Frederick County Public Schools for weather closings. Closed if FCPS is closed. Call ${center.phoneDisplay} for the recording.`;
+---
+
+<Base
+  title="School Closing Policy | SonShine Learning Center"
+  description={description}
+  current="closings"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Closings', path: '/closings/' },
+  ])}
+>
+  <article class="page wrap prose">
+    <p class="meta">Weather and emergencies</p>
+    <h1>School closing policy</h1>
+    <p class="lead">
+      SonShine follows Frederick County Public Schools. Call
+      <a href={telHref}>{center.phoneDisplay}</a> — the recording has late or closing
+      information.
+    </p>
+    <ul>
+      {center.closings.map((line) => <li>{line}</li>)}
+    </ul>
+    <p>
+      SonShine may also delay, close, or cancel for emergencies or inclement weather.
+      There are no refunds for days missed.
+    </p>
+    <p>
+      Planned no-school days are on the <a href="/schedule/">{center.calendar.label} calendar</a>.
+    </p>
+  </article>
+</Base>
+
+<style>
+  .page {
+    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-16);
+    max-width: 46rem;
+  }
+
+  .page h1 {
+    margin: var(--space-3) 0 var(--space-4);
+  }
+
+  ul {
+    padding-left: 1.2rem;
+    margin: var(--space-6) 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  a {
+    color: var(--forest);
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import { center, mailHref } from '../data/center';
+import { breadcrumbJsonLd } from '../data/schema';
+
+const description = `Meet Mhairi Lewis, director of SonShine Learning Center, and Kathy Miller. Christian preschool teachers at Calvary Chapel Frederick in downtown Frederick, MD.`;
+---
+
+<Base
+  title="Our Teachers | SonShine Learning Center"
+  description={description}
+  current="teachers"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Teachers', path: '/teachers/' },
+  ])}
+>
+  <article class="page wrap">
+    <p class="meta">Faculty</p>
+    <h1>Our teachers</h1>
+    <p class="lead">
+      Laughing and playing are required of all participants. Lessons are reviewed by
+      the director. Teachers hold First Aid and CPR training.
+    </p>
+    <div class="grid">
+      {
+        center.teachers.map((t) => (
+          <article>
+            <img src={t.photo} alt={`${t.name}, ${t.role}`} width="800" height="1000" />
+            <h2>{t.name}</h2>
+            <p class="meta">{t.role}</p>
+            <p>{t.bio}</p>
+          </article>
+        ))
+      }
+    </div>
+    <p>
+      Email <a href={mailHref}>{center.email}</a> to reach Mrs. Mhairi.
+    </p>
+  </article>
+</Base>
+
+<style>
+  .page {
+    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-16);
+  }
+
+  .page h1 {
+    margin: var(--space-3) 0 var(--space-4);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--space-12);
+    margin: var(--space-10) 0;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    margin-bottom: var(--space-4);
+  }
+
+  h2 {
+    font-size: var(--step-2);
+    margin-bottom: var(--space-2);
+  }
+
+  a {
+    color: var(--forest);
+    font-weight: 600;
+  }
+
+  @media (min-width: 800px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

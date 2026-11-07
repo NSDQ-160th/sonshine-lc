@@ -1,0 +1,100 @@
+---
+import Base from '../layouts/Base.astro';
+import { center } from '../data/center';
+import { breadcrumbJsonLd } from '../data/schema';
+
+const description = `SonShine Learning Center ${center.calendar.label} calendar and typical morning in Frederick, MD. First day ${center.calendar.firstDay}. Last day ${center.calendar.lastDay}. Monday, Wednesday, Friday 9:00 AM–12:00 PM.`;
+---
+
+<Base
+  title={`Schedule ${center.calendar.label} | SonShine Learning Center`}
+  description={description}
+  current="schedule"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Schedule', path: '/schedule/' },
+  ])}
+>
+  <article class="page wrap">
+    <p class="meta">{center.calendar.label}</p>
+    <h1>Schedule</h1>
+    <p class="lead">
+      First day {center.calendar.firstDay}. Last day {center.calendar.lastDay}. Parties
+      and no-school days follow this calendar. Emergency closings follow Frederick
+      County Public Schools — see <a href="/closings/">closings</a>.
+    </p>
+
+    <div class="split">
+      <section>
+        <h2>School year</h2>
+        <ul>
+          {center.calendar.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+      <section>
+        <h2>Typical morning</h2>
+        <ol>
+          {
+            center.day.map((row) => (
+              <li>
+                <span>{row.time}</span>
+                {row.label}
+              </li>
+            ))
+          }
+        </ol>
+        <p>{center.program.notes}</p>
+        <p>
+          <a href="/s/FROG-schedule.pdf">Detailed daily schedule (PDF)</a><br />
+          <a href="/s/Learning-Schedule.pdf">Weekly study focus (PDF)</a>
+        </p>
+      </section>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page {
+    padding: calc(var(--header-offset) + var(--space-10)) 0 var(--space-16);
+  }
+
+  .page h1 {
+    margin: var(--space-3) 0 var(--space-4);
+  }
+
+  .split {
+    display: grid;
+    gap: var(--space-12);
+    margin-top: var(--space-10);
+  }
+
+  h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  ul,
+  ol {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  ol span {
+    display: inline-block;
+    width: 3.5rem;
+    font-family: var(--font-display);
+    color: var(--forest);
+  }
+
+  a {
+    color: var(--forest);
+    font-weight: 600;
+  }
+
+  @media (min-width: 800px) {
+    .split {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
